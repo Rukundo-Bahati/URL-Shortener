@@ -1,13 +1,9 @@
 const express = require("express");
-const mongoose = require("mongoose");
+
 const ShortUrl = require("./models/shortUrl");
+const connection = require('./db');
 
 const app = express();
-mongoose.connect("mongodb://localhost/urlShortener", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-}).then(() => console.log('Connected Successfully'))
-  .catch(err => console.error('Connection Error:', err));
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
