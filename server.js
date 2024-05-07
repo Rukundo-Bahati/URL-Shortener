@@ -1,7 +1,8 @@
-const config = require("config");
+require('dotenv').config();
 const express = require("express");
 const ShortUrl = require("./models/shortUrl");
 const user = require("./controllers/users");
+const auth = require('./controllers/auth');
 const connection = require("./db");
 const shortUrl = require("./controllers/urls");
 
@@ -13,7 +14,9 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
-app.use("/user", user);
+app.use(express.json())
+app.use("/api/user", user);
+app.use('/api/auth', auth)
 app.use("/shortUrl", shortUrl);
 
 const port = process.env.PORT || 5500;

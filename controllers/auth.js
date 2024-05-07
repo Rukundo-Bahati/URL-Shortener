@@ -3,7 +3,6 @@ const express = require("express");
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
-const { emit } = require("nodemon");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
@@ -18,7 +17,7 @@ router.post("/", async (req, res) => {
       req.body.password,
       user.password
     );
-    if (!validPassword) return res.status(401).send("Invali email or password");
+    if (!validPassword) return res.status(401).send("Invalid email or password");
 
     const token = user.generateAuthToken();
     res.send(token);
@@ -27,7 +26,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-function validate(data) {
+function validateData(data) {
   const schema = Joi.object({
     email: Joi.string().required(),
     password: Joi.string().required(),
@@ -36,4 +35,4 @@ function validate(data) {
   return schema.validate(data);
 }
 
-module.exports = { router, validate };
+module.exports = router 
