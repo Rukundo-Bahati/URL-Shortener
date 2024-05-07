@@ -15,5 +15,15 @@ app.use("/api/user", user);
 app.use('/api/auth', auth)
 app.use("/shortUrl", shortUrl);
 
+app.get('/login', (req,res) => {
+  res.render('login')
+})
+
+app.get('/signup', (req,res) => {
+  res.render('signup')
+})
+
+
+
 const port = process.env.PORT || 5500;
 app.listen(port, () => console.log(`server is running on ${port}`));

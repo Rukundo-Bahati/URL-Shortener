@@ -20,7 +20,14 @@ router.post("/", async (req, res) => {
     if (!validPassword) return res.status(401).send("Invalid email or password");
 
     const token = user.generateAuthToken();
-    res.send(token);
+
+    // Store the token in local storage on the client side
+    res.send(`
+      <script>
+        localStorage.setItem('token', '${token}');
+        window.location.href = '/shortUrl';
+      </script>
+    `);
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error" });
   }
@@ -35,4 +42,4 @@ function validate(data) {
   return schema.validate(data);
 }
 
-module.exports = router 
+module.exports = router;

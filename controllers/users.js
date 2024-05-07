@@ -17,10 +17,16 @@ router.post("/", async (req, res) => {
 
     const salt = await bcrypt.genSalt(Number(process.env.SALT));
     user.password = await bcrypt.hash(req.body.password, salt);
+    
     const token = user.generateAuthToken();
     await user.save(); 
 
-    res.send(token);
+    res.send(`
+    <script>
+      localStorage.setItem('token', '${token}');
+      window.location.href = '/shortUrl';
+    </script>
+  `);
   } catch (error) {
     res.status(500).send('Internal Server Error');
   }
