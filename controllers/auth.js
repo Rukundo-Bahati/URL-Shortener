@@ -1,6 +1,6 @@
 const config = require("config");
 const express = require("express");
-const { User, validate } = require("../models/user");
+const { User } = require("../models/user");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const router = express.Router();
@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-function validateData(data) {
+function validate(data) {
   const schema = Joi.object({
     email: Joi.string().required(),
     password: Joi.string().required(),

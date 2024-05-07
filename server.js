@@ -6,12 +6,8 @@ const auth = require('./controllers/auth');
 const connection = require("./db");
 const shortUrl = require("./controllers/urls");
 
+//middlewares
 const app = express();
-// if (!config.get("JWTPRIVATEKEY")) {
-//   console.log("JWTPRIVATEKEY is not defined");
-//   process.exit(1);
-// }
-
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())

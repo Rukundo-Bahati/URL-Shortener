@@ -1,5 +1,7 @@
 const express = require('express');
 const { ShortUrl }  = require('../models/shortUrl');
+const _=require('lodash');
+const auth = require('../middleware/auth');
 const router = express.Router()
 
 
@@ -10,9 +12,16 @@ router.get("/", async (req, res) => {
 });
 
 //posting a new shortUrl into a DB
-router.post("/", async (req, res) => {
+router.post("/", auth,async (req, res) => {
   await ShortUrl.create({ full: req.body.fullUrl });
   res.redirect("/");
+
+  // POSTMAN TESTING
+
+  // const url = new ShortUrl(_.pick(req.body, ['full']))
+  // const result = await url.save()
+  // res.send(result)
+
 });
 
 router.get("/:shortUrl", async (req, res) => {
