@@ -42,10 +42,11 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
-
     .sign {
-      width: 30%;
+      width: 100%; 
+      max-width: 200px; 
     }
   </style>
   <title>Linkly</title>
@@ -64,12 +65,12 @@
   </nav>
   <div class="container">
     <div class="row">
-      <div class="col left">
-        <h1 class="text-light">More than just <br> shorter links</h1>
+      <div class="col-lg-6 col-md-12 left">
+        <h1 class="text-light">More than just shorter links</h1>
         <p class="text-light">Shorten your links easily and get insights on how your links are performing.</p>
         <a href="/signup" class="btn btn-primary sign">Get started</a>
       </div>
-      <div class="col">
+      <div class="col-lg-6 col-md-12">
         <img src="/illustration-working.svg" alt="User image" class="bg">
       </div>
     </div>

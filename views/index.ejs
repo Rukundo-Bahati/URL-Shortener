@@ -25,9 +25,7 @@
     <nav class="navbar navbar-light mx-5" style="background-color: #0e131e">
       <h1 class="logo">Linkly</h1>
       <div>
-        <a href="/home">
-          <button type="button" class="btn btn-primary">Log out</button>
-        </a>
+          <button type="button" class="btn btn-primary" id="logoutBtn">Log out</button>
       </div>
     </nav>
 
@@ -76,10 +74,17 @@
         </tbody>
       </table>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-      crossorigin="anonymous"
-    ></script>
+
+    <script>
+      // Function to handle logout action
+      function logout() {
+      
+        localStorage.removeItem('token');
+  
+        window.location.href = '/home'; 
+      }
+
+      document.getElementById('logoutBtn').addEventListener('click', logout);
+    </script>
   </body>
 </html>
