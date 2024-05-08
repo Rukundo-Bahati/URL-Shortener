@@ -18,6 +18,15 @@
         font-size: 36px;
         font-weight: bold;
       }
+
+      .link {
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        /* align-items: center; */
+        gap: 8px;
+        text-align: center;
+      }
     </style>
     <title>URL Shortener</title>
   </head>
@@ -38,7 +47,9 @@
       <p class="text-center text-light">
         You can create 05 more links. Register Now to enjoy Unlimited usage
       </p>
-      <a href="/login">Login here</a><p>If you have no account</p>
+      <div class="link">
+        <a href="/login">Login here</a><p>If you have no account</p>
+      </div>
 
       <form action="/shortUrl" method="post" class="my-4 form-inline d-flex">
         <input
