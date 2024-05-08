@@ -15,12 +15,18 @@ app.use("/api/user", user);
 app.use('/api/auth', auth)
 app.use("/shortUrl", shortUrl);
 
+app.use(express.static('public'));
+
 app.get('/login', (req,res) => {
   res.render('login')
 })
 
 app.get('/signup', (req,res) => {
   res.render('signup')
+})
+
+app.get('/home', (req,res) => {
+  res.render('home')
 })
 
 
